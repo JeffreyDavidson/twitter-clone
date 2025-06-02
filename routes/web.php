@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Timeline\TimelineController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -20,6 +21,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('api/timeline', [TimelineController::class, 'index'])->name('timeline');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
