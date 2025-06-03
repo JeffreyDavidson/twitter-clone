@@ -2,6 +2,7 @@
 import { Link, router, usePage } from '@inertiajs/vue3';
 import AppTweet from '../Tweets/AppTweet.vue';
 import { onMounted, ref, watch } from 'vue';
+import AppTweetCompose from '../Compose/AppTweetCompose.vue';
 
 const props = defineProps({
     tweets: Array,
@@ -43,6 +44,9 @@ onMounted(() => {
 
 <template>
     <div>
+        <div class="border-b-8 border-gray-800 p-4 w-full">
+            <AppTweetCompose/>
+        </div>
         <AppTweet
             v-for="tweet in items"
             :key="tweet.id"
