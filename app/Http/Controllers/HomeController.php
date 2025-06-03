@@ -14,7 +14,7 @@ class HomeController
     {
         $tweets = $request->user()
             ->tweetsFromFollowing()
-            ->paginate(5);
+            ->paginate(20);
 
         return Inertia::render('Home', [
             'tweets' => new TweetCollection($tweets),
