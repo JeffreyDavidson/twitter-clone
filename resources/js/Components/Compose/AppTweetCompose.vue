@@ -1,18 +1,21 @@
 <script setup>
 
-import { computed, reactive } from 'vue'
-import { router, usePage } from '@inertiajs/vue3'
+import { computed } from 'vue'
+import { usePage, useForm } from '@inertiajs/vue3'
 
 const page = usePage()
 
 const user = computed(() => page.props.auth.user.data)
 
-const form = reactive({
+const form = useForm({
   body: null,
-})
+});
 
 function submit() {
-  router.post('/tweet', form)
+  form.post('/tweet', {
+    preserveScroll: true,
+    onSuccess: () => form.reset(),
+  });
 }
 </script>
 
